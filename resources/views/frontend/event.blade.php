@@ -1,23 +1,23 @@
-@include('layouts.navbar') 
+@include('layouts.navbar')
 
-        <!-- Hero Start -->
-        <div class="container-fluid hero-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="hero-header-inner animated zoomIn">
-                            <h1 class="display-1 text-dark">Events</h1>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                                <li class="breadcrumb-item text-dark" aria-current="page">Events</li>
-                            </ol>
-                        </div>
-                    </div>
+<!-- Hero Start -->
+<div class="container-fluid hero-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1 text-dark">Events</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-dark" aria-current="page">Events</li>
+                    </ol>
                 </div>
             </div>
         </div>
-        <!-- Hero End -->
+    </div>
+</div>
+<!-- Hero End -->
 
 <!-- Events Start -->
 <div class="container-fluid event py-5">
@@ -38,12 +38,14 @@
                 <div class="ms-3">
                     <h4 class="mb-3">Community Health Outreach</h4>
                     <p class="mb-4">
-    A free community medical outreach providing essential health services such as basic checkups, health 
-    education, wellness counseling, and preventive care. This initiative is dedicated to supporting 
-    underserved families, increasing health awareness, and promoting long-term wellbeing within our community.
-</p>
+                        A free community medical outreach providing essential health services such as basic checkups,
+                        health
+                        education, wellness counseling, and preventive care. This initiative is dedicated to supporting
+                        underserved families, increasing health awareness, and promoting long-term wellbeing within our
+                        community.
+                    </p>
 
-                    
+
                 </div>
             </div>
             <div class="col-12 col-lg-4">
@@ -65,12 +67,15 @@
                 <div class="ms-3">
                     <h4 class="mb-3">Youth Skills Training Workshop</h4>
                     <p class="mb-4">
-    A one-day capacity-building workshop designed to equip young people with essential digital, leadership,
-    and entrepreneurial skills. This program empowers participants to discover their potential, build
-    confidence, and gain practical knowledge that prepares them for future career and economic opportunities.
-</p>
+                        A one-day capacity-building workshop designed to equip young people with essential digital,
+                        leadership,
+                        and entrepreneurial skills. This program empowers participants to discover their potential,
+                        build
+                        confidence, and gain practical knowledge that prepares them for future career and economic
+                        opportunities.
+                    </p>
 
-                    
+
                 </div>
             </div>
             <div class="col-12 col-lg-4">
@@ -92,13 +97,16 @@
                 <div class="ms-3">
                     <h4 class="mb-3">Women Empowerment Seminar</h4>
                     <p class="mb-4">
-    A transformative empowerment seminar dedicated to enhancing financial literacy, personal development, and 
-    rights awareness for women in underserved communities. This seminar aims to inspire confidence, provide 
-    valuable skills, and foster a sense of empowerment, enabling women to take charge of their financial futures, 
-    advocate for their rights, and lead meaningful change in their communities.
-</p>
+                        A transformative empowerment seminar dedicated to enhancing financial literacy, personal
+                        development, and
+                        rights awareness for women in underserved communities. This seminar aims to inspire confidence,
+                        provide
+                        valuable skills, and foster a sense of empowerment, enabling women to take charge of their
+                        financial futures,
+                        advocate for their rights, and lead meaningful change in their communities.
+                    </p>
 
-                    
+
                 </div>
             </div>
             <div class="col-12 col-lg-4">
@@ -113,4 +121,4 @@
 <!-- Events End -->
 
 
-   @include('layouts.footer')
+@include('layouts.footer')

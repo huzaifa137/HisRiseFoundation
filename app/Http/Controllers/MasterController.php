@@ -125,11 +125,6 @@ class MasterController extends Controller
         return redirect()->route('/')->with('status', 'Logged out successfully');
     }
 
-    public function dashboard()
-    {
-        return view('frontend.dashboard');
-    }
-
     public function index()
     {
         return view('frontend.index');

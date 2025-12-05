@@ -1,4 +1,79 @@
 <!-- Footer Start -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: "{{ session('success') }}",
+            timer: 2000,
+            showConfirmButton: false
+        });
+    </script>
+@endif
+
+@if (session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: "{{ session('error') }}",
+            timer: 2500,
+            showConfirmButton: true
+        });
+    </script>
+@endif
+
+@if (session('warning'))
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Warning',
+            text: "{{ session('warning') }}",
+            timer: 2500,
+            showConfirmButton: true
+        });
+    </script>
+@endif
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var sidebarToggle = document.getElementById('sidebarToggle');
+        var wrapper = document.getElementById('wrapper');
+
+        if (sidebarToggle && wrapper) {
+            sidebarToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                wrapper.classList.toggle('toggled');
+            });
+        }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out of the system.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, logout",
+            cancelButtonText: "Cancel"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logoutForm').submit();
+            }
+        });
+    });
+</script>
+
+
 <div class="container-fluid footer pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row py-5">
@@ -19,16 +94,16 @@
         </div>
         <div class="row g-4 footer-inner">
             <div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="footer-item mt-5">
-        <h4 class="text-light mb-4">HisRise<span class="text-primary">Foundation</span></h4>
-        <p class="mb-4 text-secondary">
-            HisRise Foundation is dedicated to empowering vulnerable communities through education, 
-            healthcare support,  development, and faith-driven outreach programs that create lasting 
-            transformation and hope.
-        </p>
-        <a href="javascript:void();" class="btn btn-primary py-2 px-4">Donate Now</a>
-    </div>
-</div>
+                <div class="footer-item mt-5">
+                    <h4 class="text-light mb-4">HisRise<span class="text-primary">Foundation</span></h4>
+                    <p class="mb-4 text-secondary">
+                        HisRise Foundation is dedicated to empowering vulnerable communities through education,
+                        healthcare support, development, and faith-driven outreach programs that create lasting
+                        transformation and hope.
+                    </p>
+                    <a href="javascript:void();" class="btn btn-primary py-2 px-4">Donate Now</a>
+                </div>
+            </div>
 
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item mt-5">

@@ -95,8 +95,22 @@
                             class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
                         <a href="{{ url('activity') }}"
                             class="nav-item nav-link {{ request()->is('activity') ? 'active' : '' }}">Activities</a>
-                        <a href="{{ url('event') }}"
-                            class="nav-item nav-link {{ request()->is('event') ? 'active' : '' }}">Events</a>
+                        <div class="nav-item dropdown 
+    {{ request()->is('event') || request()->is('Volunteer') || request()->is('Partner') ? 'active' : '' }}">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                Get Involved
+                            </a>
+                            <div class="dropdown-menu m-0 rounded-0">
+                                <a href="{{ url('event') }}"
+                                    class="dropdown-item {{ request()->is('event') ? 'active' : '' }}">Events</a>
+
+                                <a href="{{ url('Volunteer') }}"
+                                    class="dropdown-item {{ request()->is('Volunteer') ? 'active' : '' }}">Volunteers</a>
+
+                                <a href="{{ url('Partner') }}"
+                                    class="dropdown-item {{ request()->is('Partner') ? 'active' : '' }}">Partners</a>
+                            </div>
+                        </div>
                         <a href="{{ url('sermon') }}"
                             class="nav-item nav-link {{ request()->is('sermon') ? 'active' : '' }}">Our Programs</a>
                         <a href="{{ url('blog') }}"

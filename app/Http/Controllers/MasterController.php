@@ -130,4 +130,9 @@ class MasterController extends Controller
         return view('frontend.index');
     }
 
+    public function events()
+    {
+        return view('frontend.events');
+    }
+
 }

@@ -81,7 +81,7 @@
         <!-- ADD EVENT MODAL -->
         <div class="modal fade" id="addEventModal" tabindex="-1">
             <div class="modal-dialog">
-                <form method="POST" action="{{ route('admin.events.store') }}">
+                <form method="POST" action="{{ route('admin.events.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-content">
 
@@ -104,6 +104,9 @@
                             <label>Description</label>
                             <textarea class="form-control mb-3" name="description" rows="4" required></textarea>
 
+                            <label>Image</label>
+                            <input type="file" class="form-control mb-3" name="image" accept="image/*">
+
                         </div>
 
                         <div class="modal-footer">
@@ -121,7 +124,7 @@
         <!-- EDIT EVENT MODAL -->
         <div class="modal fade" id="editEventModal" tabindex="-1">
             <div class="modal-dialog">
-                <form method="POST" action="{{ route('admin.events.update') }}">
+                <form method="POST" action="{{ route('admin.events.update') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="editEventId">
 
@@ -146,6 +149,9 @@
                             <label>Description</label>
                             <textarea class="form-control mb-3" id="editEventDesc" name="description" rows="4"
                                 required></textarea>
+
+                            <label>Image</label>
+                            <input type="file" class="form-control mb-3" name="image" accept="image/*">
 
                         </div>
 
@@ -237,7 +243,6 @@
         </script>
 
     </div>
-
 
 </div>
 

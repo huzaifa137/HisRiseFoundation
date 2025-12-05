@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Event;
@@ -67,34 +68,55 @@ class AdminController extends Controller
 
     public function storeEvent(Request $request)
     {
+        
         $request->validate([
             'event_date' => 'required|date',
             'event_time' => 'required',
             'title' => 'required|string|max:255',
-            'description' => 'required|string'
+            'description' => 'nullable|string',
+            'image' => 'nullable|image'
         ]);
 
-        Event::create([
-            'event_date' => $request->event_date,
-            'event_time' => $request->event_time,
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
-
-        return back()->with('success', 'Event created successfully!');
-    }
-
-    public function updateEvent(Request $request)
-    {
-        $event = Event::findOrFail($request->id);
+        $event = new Event();
 
         $event->event_date = $request->event_date;
         $event->event_time = $request->event_time;
         $event->title = $request->title;
         $event->description = $request->description;
+
+        if ($request->hasFile('image')) {
+            $event->image = $request->image->store('events', 'public');
+        }
+
         $event->save();
 
-        return back()->with('success', 'Event updated successfully!');
+        return redirect()->back()->with('success', 'Event created successfully!');
+    }
+
+    public function updateEvent(Request $request)
+    {
+
+        $event = Event::findOrFail($request->id);
+
+        $data = $request->validate([
+            'event_date' => 'required|date',
+            'event_time' => 'required',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'nullable|image|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            if ($event->image) {
+                Storage::disk('public')->delete($event->image);
+            }
+
+            $data['image'] = $request->image->store('events', 'public');
+        }
+
+        $event->update($data);
+
     }
 
     public function deleteEvent($id)

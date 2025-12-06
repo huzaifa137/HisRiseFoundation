@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\Volunteer;
 use App\Models\Event;
 use App\Models\User;
 
@@ -155,4 +156,22 @@ class AdminController extends Controller
         return back()->with('success', 'Event deleted!');
     }
 
+    public function storeVolunteer(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'area_of_interest' => 'required',
+            'message' => 'required'
+        ]);
+
+        Volunteer::create($validated);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Your volunteer request has been submitted successfully. Please wait for confirmation!'
+        ]);
+
+    }
 }

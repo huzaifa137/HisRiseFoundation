@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 
 Route::controller(MasterController::class)->group(function () {
 
-    Route::get('/user-registration', 'storeUser')->name('auth.register');
+    Route::get('/store-user', 'storeUser')->name('auth.register');
     Route::post('/store-login', 'Userlogin')->name('auth.login');
     Route::post('/logout', 'logout')->name('logout');
     Route::get('/', 'index')->name('/');
@@ -33,6 +33,9 @@ Route::controller(AdminController::class)->group(function () {
         Route::post('/events/update', 'updateEvent')->name('admin.events.update');
         Route::get('/events/delete/{id}', 'deleteEvent')->name('events.delete');
 
+        Route::post('/volunteer/store', 'storeVolunteer')->name('volunteer.store');
+
+    
     });
 
     Route::get('/users', 'adminUsers')->name('admin.users');

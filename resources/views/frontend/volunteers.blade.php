@@ -52,21 +52,24 @@
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                 <div class="bg-light p-5 shadow rounded border border-3 border-primary">
                     <h3 class="mb-4 text-dark text-center">Apply Today</h3>
-                    <form>
+                    <form id="volunteerForm">
+
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Your Name" required>
+                                <input type="text" class="form-control border-0 py-3" name="name"
+                                    placeholder="Your Name" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control border-0 py-3" placeholder="Your Email"
-                                    required>
+                                <input type="email" class="form-control border-0 py-3" name="email"
+                                    placeholder="Your Email" required>
                             </div>
                             <div class="col-12">
-                                <input type="tel" class="form-control border-0 py-3" placeholder="Phone Number"
-                                    required>
+                                <input type="tel" class="form-control border-0 py-3" name="phone"
+                                    placeholder="Phone Number" required>
                             </div>
                             <div class="col-12">
-                                <select class="form-select border-0 py-3" aria-label="Volunteer Area" required>
+                                <select class="form-select border-0 py-3" aria-label="Volunteer Area"
+                                    name="area_of_interest" required>
                                     <option selected disabled>Select Area of Interest</option>
                                     <option value="Community Outreach">Community Outreach</option>
                                     <option value="Education Support">Education Support</option>
@@ -76,7 +79,7 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control border-0" rows="6"
+                                <textarea class="form-control border-0" rows="6" name="message"
                                     placeholder="Tell us why you want to volunteer and about your relevant skills."
                                     required></textarea>
                             </div>
@@ -91,5 +94,39 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $("#volunteerForm").on("submit", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "{{ route('volunteer.store') }}",
+            method: "POST",
+            data: $(this).serialize(),
+            headers: {
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            success: function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Application Submitted!',
+                    text: response.message,
+                    confirmButtonColor: '#3085d6'
+                });
+
+                $("#volunteerForm")[0].reset();
+            },
+            error: function (xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Something went wrong!',
+                    text: 'Please check your inputs and try again.'
+                });
+            }
+        });
+    });
+</script>
 
 @include('layouts.footer')

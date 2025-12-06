@@ -53,8 +53,7 @@
                     <div class="overflow-hidden mb-5">
 
                         @if($event->image)
-                            <img src="{{ asset('storage/' . $event->image) }}" class="img-fluid w-100"
-                                alt="{{ $event->title }}">
+                            <img src="{{ asset('events/' . $event->image) }}" class="img-fluid w-100" alt="{{ $event->title }}">
                         @else
                             <img src="/img/default-event.jpg" class="img-fluid w-100" alt="">
                         @endif
@@ -66,7 +65,7 @@
 
         @empty
 
-            <p class="text-muted">No upcoming events at the moment.</p>
+            <p class="text-warning text-center">No upcoming events at the moment.</p>
 
         @endforelse
 

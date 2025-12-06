@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -45,6 +46,13 @@ class MasterController extends Controller
 
             case 'login':
                 // $data['projects'] = Project::active()->get();
+                break;
+
+            case 'volunteers':
+                break;
+
+            case 'event':
+                $data['events'] = Event::orderBy('event_date', 'asc')->get();
                 break;
 
             default:

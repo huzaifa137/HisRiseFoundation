@@ -68,7 +68,7 @@ class AdminController extends Controller
 
     public function storeEvent(Request $request)
     {
-        
+
         $request->validate([
             'event_date' => 'required|date',
             'event_time' => 'required',
@@ -85,8 +85,17 @@ class AdminController extends Controller
         $event->description = $request->description;
 
         if ($request->hasFile('image')) {
-            $event->image = $request->image->store('events', 'public');
+
+            $dir = public_path('events');
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
+            }
+
+            $filename = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('events'), $filename);
+            $event->image = $filename;
         }
+
 
         $event->save();
 
@@ -95,10 +104,9 @@ class AdminController extends Controller
 
     public function updateEvent(Request $request)
     {
-
         $event = Event::findOrFail($request->id);
 
-        $data = $request->validate([
+        $request->validate([
             'event_date' => 'required|date',
             'event_time' => 'required',
             'title' => 'required|string',
@@ -106,18 +114,40 @@ class AdminController extends Controller
             'image' => 'nullable|image|max:2048'
         ]);
 
+        // Update normal fields
+        $event->event_date = $request->event_date;
+        $event->event_time = $request->event_time;
+        $event->title = $request->title;
+        $event->description = $request->description;
+
+        // Handle image upload
         if ($request->hasFile('image')) {
 
-            if ($event->image) {
-                Storage::disk('public')->delete($event->image);
+            // Delete old image
+            if ($event->image && file_exists(public_path('events/' . $event->image))) {
+                unlink(public_path('events/' . $event->image));
             }
 
-            $data['image'] = $request->image->store('events', 'public');
+            // Ensure folder exists
+            $dir = public_path('events');
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777, true);
+            }
+
+            // Save new image
+            $filename = time() . '_' . uniqid() . '.' .
+                $request->image->getClientOriginalExtension();
+
+            $request->image->move(public_path('events'), $filename);
+
+            $event->image = $filename;
         }
 
-        $event->update($data);
+        $event->save();
 
+        return redirect()->back()->with('success', 'Event updated successfully!');
     }
+
 
     public function deleteEvent($id)
     {

@@ -21,8 +21,7 @@ Route::controller(AdminController::class)->group(function () {
         Route::get('/programs', 'dashboard2')->name('admin.programs');
         Route::get('/partners', 'dashboard3')->name('admin.partners');
         Route::get('/volunteers', 'dashboard4')->name('admin.volunteers');
-        Route::get('/settings', 'dashboard5')->name('admin.settings');
-        Route::get('/messages', 'dashboard6')->name('admin.messages');
+        Route::get('/blogs', 'dashboard5')->name('admin.blogs');
 
         // users admin
         Route::post('/users/update', 'update')->name('admin.users.update');

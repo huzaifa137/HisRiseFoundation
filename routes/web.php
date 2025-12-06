@@ -39,6 +39,7 @@ Route::controller(AdminController::class)->group(function () {
     });
 
     Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
+    Route::get('/program-details', 'programDetails')->name('program.details');
     Route::get('/users', 'adminUsers')->name('admin.users');
     Route::get('/volunteers-admin', 'adminVolunteers')->name('admin.volunteers');
     Route::get('/partners-admin', 'adminPartners')->name('admin.partners');

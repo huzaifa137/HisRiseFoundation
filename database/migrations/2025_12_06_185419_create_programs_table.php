@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('excerpt');
+            $table->text('brief');
             $table->longText('details');
             $table->string('image')->nullable();
             $table->timestamps();

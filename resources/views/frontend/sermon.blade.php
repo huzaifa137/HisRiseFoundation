@@ -154,20 +154,30 @@
                 </div>
             </div> --}}
 
-            <div class="col-lg-6 col-xl-4">
-                <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
-                    <div class="overflow-hidden p-4 pb-0">
-                        <img src="uploads/programs/IMAGE.jpg" class="img-fluid w-100" alt="#">
-                    </div>
-                    <div class="p-4">
-                        <a href="#" class="d-inline-block h4 lh-sm mb-3">
-                            #
-                        </a>
-                        <p class="mb-3">#</p>
-                        <a href="#" class="btn btn-primary px-3">More Details</a>
+            @foreach($programs as $program)
+                <div class="col-lg-6 col-xl-4">
+                    <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
+
+                        <div class="overflow-hidden p-4 pb-0" style="height: 250px; overflow: hidden; border-radius: 6px;">
+
+                            <img src="{{ asset('programs/' . $program->image) }}" alt="{{ $program->title }}"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        </div>
+
+                        <div class="p-4">
+                            <a href="{{ route('program.details', $program->id) }}" class="d-inline-block h4 lh-sm mb-3">
+                                {{ $program->title }}
+                            </a>
+                            <p class="mb-3">{{ $program->brief }}</p>
+                            <a href="{{ route('program.details', $program->id) }}" class="btn btn-primary px-3">More
+                                Details</a>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+
+            @endforeach
+
 
         </div>
     </div>

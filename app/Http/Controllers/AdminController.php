@@ -231,9 +231,10 @@ class AdminController extends Controller
 
     public function storePrograms(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
-            'excerpt' => 'required',
+            'brief' => 'required',
             'details' => 'required',
             'image' => 'nullable|image|max:2048'
         ]);
@@ -241,7 +242,7 @@ class AdminController extends Controller
         $program = new Program();
 
         $program->title = $request->title;
-        $program->excerpt = $request->excerpt;
+        $program->brief = $request->brief;
         $program->details = $request->details;
 
         if ($request->hasFile('image')) {
@@ -261,7 +262,7 @@ class AdminController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'excerpt' => 'required',
+            'brief' => 'required',
             'details' => 'required',
             'image' => 'nullable|image|max:2048'
         ]);
@@ -279,7 +280,7 @@ class AdminController extends Controller
 
         $program->update([
             'title' => $request->title,
-            'excerpt' => $request->excerpt,
+            'brief' => $request->brief,
             'details' => $request->details,
         ]);
 

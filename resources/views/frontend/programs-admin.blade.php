@@ -56,7 +56,7 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>
-                                        <img src="{{ asset('uploads/programs/' . $p->image) }}"
+                                        <img src="{{ asset('programs/' . $p->image) }}"
                                             style="height: 60px; width: auto; border-radius: 6px;">
                                     </td>
                                     <td>{{ $p->title }}</td>
@@ -64,11 +64,11 @@
 
                                     <td class="text-center">
 
-                                        <button class="btn btn-sm btn-primary editProgramBtn" data-id="{{ $p->id }}"
+                                        {{-- <button class="btn btn-sm btn-primary editProgramBtn" data-id="{{ $p->id }}"
                                             data-title="{{ $p->title }}" data-brief="{{ $p->brief }}"
                                             data-details="{{ htmlspecialchars($p->details) }}">
                                             <i class="fa fa-edit me-1"></i> Edit
-                                        </button>
+                                        </button> --}}
 
                                         <button class="btn btn-sm btn-danger deleteProgramBtn" data-id="{{ $p->id }}">
                                             <i class="fa fa-trash"></i> Delete
@@ -109,7 +109,7 @@
                             <textarea class="form-control mb-3" name="brief" rows="3" required></textarea>
 
                             <label>Details</label>
-                            <textarea class="form-control mb-3 rich-editor" name="details" rows="6" required></textarea>
+                            <textarea class="form-control mb-3 rich-editor" name="details" rows="6"></textarea>
 
                             <label>Image</label>
                             <input type="file" class="form-control mb-3" name="image" accept="image/*" required>
@@ -118,7 +118,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-success">
+                            <button class="btn btn-success" id="addProgramSubmitBtn">
                                 <i class="fa fa-check me-1"></i> Create Program
                             </button>
                         </div>
@@ -155,7 +155,7 @@
 
                             <label>Details</label>
                             <textarea class="form-control mb-3 rich-editor" id="editProgramDetails" name="details"
-                                rows="6" required></textarea>
+                                rows="6"></textarea>
 
                             <label>Replace Image</label>
                             <input type="file" class="form-control mb-3" name="image" accept="image/*">
@@ -164,7 +164,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" id="editProgramSubmitBtn">
                                 <i class="fa fa-save me-1"></i> Save
                             </button>
                         </div>
@@ -233,6 +233,34 @@
 
                     });
                 });
+
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                // ADD PROGRAM FORM SUBMIT LOADING
+                const addForm = document.querySelector('#addProgramModal form');
+                const addBtn = document.getElementById('addProgramSubmitBtn');
+
+                if (addForm) {
+                    addForm.addEventListener("submit", function () {
+                        addBtn.disabled = true;
+                        addBtn.innerHTML = `<i class="fa fa-spinner fa-spin me-1"></i> Creating Program...`;
+                    });
+                }
+
+                // EDIT PROGRAM FORM SUBMIT LOADING
+                const editForm = document.querySelector('#editProgramModal form');
+                const editBtn = document.getElementById('editProgramSubmitBtn');
+
+                if (editForm) {
+                    editForm.addEventListener("submit", function () {
+                        editBtn.disabled = true;
+                        editBtn.innerHTML = `<i class="fa fa-spinner fa-spin me-1"></i> Saving...`;
+                    });
+                }
 
             });
         </script>

@@ -8,7 +8,7 @@ class Program extends Model
 {
     protected $fillable = [
         'title',
-        'excerpt',
+        'brief',
         'details',
         'image',
     ];

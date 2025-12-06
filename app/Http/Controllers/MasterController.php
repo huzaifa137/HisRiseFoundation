@@ -50,7 +50,7 @@ class MasterController extends Controller
                 break;
 
             case 'sermon':
-                $data['program'] = Program::orderBy('id', 'desc')->get();
+                $data['programs'] = Program::orderBy('id', 'asc')->get();
                 break;
 
             case 'volunteers':

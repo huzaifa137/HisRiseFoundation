@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -48,6 +49,10 @@ class MasterController extends Controller
                 // $data['projects'] = Project::active()->get();
                 break;
 
+            case 'sermon':
+                $data['program'] = Program::orderBy('id', 'desc')->get();
+                break;
+
             case 'volunteers':
                 break;
 
@@ -63,7 +68,6 @@ class MasterController extends Controller
             return view("frontend.$page", $data);
         }
 
-        // otherwise 404
         abort(404);
     }
 

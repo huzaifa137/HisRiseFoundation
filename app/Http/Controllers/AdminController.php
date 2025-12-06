@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Volunteer;
+use App\Models\Program;
+use App\Models\Partner;
 use App\Models\Event;
 use App\Models\User;
 
@@ -172,6 +174,128 @@ class AdminController extends Controller
             'status' => 'success',
             'message' => 'Your volunteer request has been submitted successfully. Please wait for confirmation!'
         ]);
+    }
 
+    public function storePartner(Request $request)
+    {
+
+        $request->validate([
+            'organization' => 'required|string|max:255',
+            'contact_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
+            'organization_type' => 'required|string',
+            'interest_area' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        Partner::create($request->all());
+
+        return response()->json([
+            'message' => 'Thank you for your interest! Our team will contact you soon.'
+        ]);
+    }
+
+    public function adminVolunteers()
+    {
+        $volunteers = Volunteer::orderBy('id', 'asc')->get();
+        return view('frontend.volunteers-admin', compact('volunteers'));
+    }
+
+    public function deleteVolunteer($id)
+    {
+        $volunteer = Volunteer::findOrFail($id);
+        $volunteer->delete();
+
+        return redirect()->back()->with('success', 'Volunteer deleted successfully!');
+    }
+
+    public function adminPartners()
+    {
+        $partners = Partner::orderBy('id', 'asc')->get();
+        return view('frontend.partners-admin', compact('partners'));
+    }
+
+    public function deletePartner($id)
+    {
+        Partner::findOrFail($id)->delete();
+
+        return redirect()->back()->with('success', 'Partner deleted successfully.');
+    }
+
+    public function adminPrograms()
+    {
+        $programs = Program::latest()->get();
+        return view('frontend.programs-admin', compact('programs'));
+    }
+
+    public function storePrograms(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'excerpt' => 'required',
+            'details' => 'required',
+            'image' => 'nullable|image|max:2048'
+        ]);
+
+        $program = new Program();
+
+        $program->title = $request->title;
+        $program->excerpt = $request->excerpt;
+        $program->details = $request->details;
+
+        if ($request->hasFile('image')) {
+            $filename = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('programs'), $filename);
+            $program->image = $filename;
+        }
+
+        $program->save();
+
+        return redirect()->back()->with('success', 'Program created successfully!');
+    }
+
+    public function updatePrograms(Request $request)
+    {
+        $program = Program::findOrFail($request->id);
+
+        $request->validate([
+            'title' => 'required',
+            'excerpt' => 'required',
+            'details' => 'required',
+            'image' => 'nullable|image|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            if ($program->image && file_exists(public_path('programs/' . $program->image))) {
+                unlink(public_path('programs/' . $program->image));
+            }
+
+            $filename = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('programs'), $filename);
+            $program->image = $filename;
+        }
+
+        $program->update([
+            'title' => $request->title,
+            'excerpt' => $request->excerpt,
+            'details' => $request->details,
+        ]);
+
+        return redirect()->back()->with('success', 'Program updated successfully!');
+    }
+
+    public function deletePrograms($id)
+    {
+        $program = Program::findOrFail($id);
+
+        if ($program->image && file_exists(public_path('programs/' . $program->image))) {
+            unlink(public_path('programs/' . $program->image));
+        }
+
+        $program->delete();
+
+        return redirect()->back()->with('success', 'Program deleted successfully.');
     }
 }

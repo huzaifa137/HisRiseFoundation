@@ -1,26 +1,26 @@
 @include('layouts.navbar')
 
-        <!-- Hero Start -->
-        <div class="container-fluid hero-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="hero-header-inner animated zoomIn">
-                            <h1 class="display-1 text-dark">Sermons</h1>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                                <li class="breadcrumb-item text-dark" aria-current="page">Sermons</li>
-                            </ol>
-                        </div>
-                    </div>
+<!-- Hero Start -->
+<div class="container-fluid hero-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="hero-header-inner animated zoomIn">
+                    <h1 class="display-1 text-dark">Our Programs</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-dark" aria-current="page">Our Programs</li>
+                    </ol>
                 </div>
             </div>
         </div>
-        <!-- Hero End -->
+    </div>
+</div>
+<!-- Hero End -->
 
 
-        <!-- Sermon Start -->
+<!-- Sermon Start -->
 <div class="container-fluid sermon">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
@@ -28,7 +28,7 @@
         </div>
         <div class="row g-4 justify-content-center">
 
-            <!-- Community Outreach -->
+            {{-- <!-- Community Outreach -->
             <div class="col-lg-6 col-xl-4">
                 <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
                     <div class="overflow-hidden p-4 pb-0">
@@ -152,12 +152,26 @@
                         <a href="#" class="btn btn-primary px-3">More Details</a>
                     </div>
                 </div>
+            </div> --}}
+
+            <div class="col-lg-6 col-xl-4">
+                <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
+                    <div class="overflow-hidden p-4 pb-0">
+                        <img src="uploads/programs/IMAGE.jpg" class="img-fluid w-100" alt="#">
+                    </div>
+                    <div class="p-4">
+                        <a href="#" class="d-inline-block h4 lh-sm mb-3">
+                            #
+                        </a>
+                        <p class="mb-3">#</p>
+                        <a href="#" class="btn btn-primary px-3">More Details</a>
+                    </div>
+                </div>
             </div>
 
-           
         </div>
     </div>
 </div>
-        <!-- Sermon End -->
+<!-- Sermon End -->
 
 @include('layouts.footer')

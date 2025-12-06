@@ -101,6 +101,12 @@
     $("#volunteerForm").on("submit", function (e) {
         e.preventDefault();
 
+        let submitBtn = $(this).find("button[type='submit']");
+        let originalText = submitBtn.html();
+
+        // Disable button and show loading text
+        submitBtn.prop("disabled", true).html("Submitting...");
+
         $.ajax({
             url: "{{ route('volunteer.store') }}",
             method: "POST",
@@ -118,15 +124,20 @@
 
                 $("#volunteerForm")[0].reset();
             },
-            error: function (xhr) {
+            error: function () {
                 Swal.fire({
                     icon: 'error',
                     title: 'Something went wrong!',
                     text: 'Please check your inputs and try again.'
                 });
+            },
+            complete: function () {
+                // Re-enable and restore button text
+                submitBtn.prop("disabled", false).html(originalText);
             }
         });
     });
 </script>
+
 
 @include('layouts.footer')

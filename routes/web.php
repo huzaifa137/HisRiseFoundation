@@ -10,13 +10,12 @@ Route::controller(MasterController::class)->group(function () {
     Route::post('/store-login', 'Userlogin')->name('auth.login');
     Route::post('/logout', 'logout')->name('logout');
     Route::get('/', 'index')->name('/');
+
 });
 
 Route::controller(AdminController::class)->group(function () {
 
     Route::prefix('admin')->group(function () {
-
-        Route::get('/blogs', 'dashboard5')->name('admin.blogs');
 
         Route::post('/users/update', 'update')->name('admin.users.update');
         Route::post('/users/store', 'store')->name('admin.users.store');
@@ -39,12 +38,26 @@ Route::controller(AdminController::class)->group(function () {
     });
 
     Route::get('/dashboard', 'dashboard')->name('admin.dashboard');
-    Route::get('/program-details', 'programDetails')->name('program.details');
     Route::get('/users', 'adminUsers')->name('admin.users');
     Route::get('/volunteers-admin', 'adminVolunteers')->name('admin.volunteers');
     Route::get('/partners-admin', 'adminPartners')->name('admin.partners');
     Route::get('/events-admin', 'adminEvents')->name('admin.events');
     Route::get('/programs-admin', 'adminPrograms')->name('admin.programs');
+    Route::get('/blogs-admin', 'adminBlogs')->name('admin.blogs');
+
+    Route::post('/program', action: 'programDetails')
+        ->name('program.details');
+
+    Route::post('/blog', 'blogDetails')
+        ->name('blog.details');
+
+    Route::post('/blog-details', action: 'blogDetails')
+        ->name('blog.details');
+
+    Route::post('/blogs/store', 'storeBlog')->name('admin.blogs.store');
+    Route::post('/blogs/update', 'updateBlog')->name('admin.blogs.update');
+    Route::get('/blogs/delete/{id}', 'deleteBlog')->name('admin.blogs.delete');
+
 
 
 });

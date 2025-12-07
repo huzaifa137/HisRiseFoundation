@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Program;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MasterController extends Controller
 {
+
     public function load($page)
     {
 
@@ -19,45 +21,20 @@ class MasterController extends Controller
 
         switch ($page) {
 
-            case 'about':
-                // $data['title'] = 'About Our NGO';
-                // $data['stats'] = [
-                //     'beneficiaries' => 12000,
-                //     'regions' => 5,
-                //     'programs' => 14,
-                // ];
-                break;
-
-            case 'contact':
-                // $data['phones'] = ['+256 700 000000', '+256 780 000000'];
-                // $data['email'] = 'info@ngo.org';
-                break;
-
-            case 'donate':
-                // $data['payment_methods'] = ['Mobile Money', 'Bank Transfer', 'Card'];
-                break;
-
-            case 'blog':
-                // $data['posts'] = Blog::latest()->take(5)->get();
-                break;
-
-            case 'projects':
-                // $data['projects'] = Project::active()->get();
-                break;
-
-            case 'login':
-                // $data['projects'] = Project::active()->get();
+            case 'index':
+                $data['programs'] = Program::orderBy('id', 'asc')->paginate(3);
                 break;
 
             case 'sermon':
                 $data['programs'] = Program::orderBy('id', 'asc')->get();
                 break;
 
-            case 'volunteers':
-                break;
-
             case 'event':
                 $data['events'] = Event::orderBy('event_date', 'asc')->get();
+                break;
+
+            case 'blog':
+                $data['blogs'] =  Blog::orderBy('published_date', 'desc')->get();
                 break;
 
             default:
@@ -67,7 +44,6 @@ class MasterController extends Controller
         if (view()->exists("frontend.$page")) {
             return view("frontend.$page", $data);
         }
-
         abort(404);
     }
 
@@ -139,12 +115,12 @@ class MasterController extends Controller
 
     public function index()
     {
-        return view('frontend.index');
+        $programs = Program::orderBy('id', 'asc')->paginate(3);
+        return view('frontend.index', compact(['programs']));
     }
 
     public function events()
     {
         return view('frontend.events');
     }
-
 }

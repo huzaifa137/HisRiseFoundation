@@ -18,22 +18,22 @@
 
     <div class="container-fluid p-4 page-content-area">
 
-        <h1 class="mb-4">Programs List</h1>
+        <h1 class="mb-4">Blogs List</h1>
 
         <div class="card shadow-sm">
             <div class="card-header fw-bold bg-white">
-                Manage Programs
+                Manage Blogs
             </div>
 
             <div class="card-body p-0">
 
                 <div class="d-flex justify-content-end mb-3">
-                    <button class="btn btn-success mt-3 me-3" data-bs-toggle="modal" data-bs-target="#addProgramModal">
-                        <i class="fa fa-plus-circle me-1"></i> Add Program
+                    <button class="btn btn-success mt-3 me-3" data-bs-toggle="modal" data-bs-target="#addBlogModal">
+                        <i class="fa fa-plus-circle me-1"></i> Add Blog
                     </button>
                 </div>
 
-                @if($programs->count())
+                @if($blogs->count())
                     <table class="table table-striped table-bordered mb-0">
                         <thead class="table-dark">
                             <tr>
@@ -41,56 +41,58 @@
                                 <th>Image</th>
                                 <th>Title</th>
                                 <th>Brief</th>
+                                <th>Published Date</th>
                                 <th style="width:180px;text-align:center">Actions</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach($programs as $index => $p)
+                            @foreach($blogs as $index => $b)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>
-                                        <img src="{{ asset('programs/' . $p->image) }}"
+                                        <img src="{{ asset('blogs/' . $b->image) }}"
                                             style="height: 60px; width: auto; border-radius: 6px;">
                                     </td>
-                                    <td>{{ $p->title }}</td>
-                                    <td>{{ Str::limit($p->brief, 40) }}</td>
-
+                                    <td>{{ $b->title }}</td>
+                                    <td>{{ Str::limit($b->brief, 40) }}</td>
+                                    <td>{{ $b->published_date->format('d M Y') }}</td>
                                     <td class="text-center">
 
-                                        {{-- <button class="btn btn-sm btn-primary editProgramBtn" data-id="{{ $p->id }}"
-                                            data-title="{{ $p->title }}" data-brief="{{ $p->brief }}"
-                                            data-details="{{ htmlspecialchars($p->details) }}">
+                                        <button class="btn btn-sm btn-primary editBlogBtn" 
+                                                data-id="{{ $b->id }}"
+                                                data-title="{{ $b->title }}"
+                                                data-brief="{{ $b->brief }}"
+                                                data-content="{{ htmlspecialchars($b->content) }}"
+                                                data-date="{{ $b->published_date }}">
                                             <i class="fa fa-edit me-1"></i> Edit
-                                        </button> --}}
+                                        </button>
 
-                                        <button class="btn btn-sm btn-danger deleteProgramBtn" data-id="{{ $p->id }}">
+                                        <button class="btn btn-sm btn-danger deleteBlogBtn" data-id="{{ $b->id }}">
                                             <i class="fa fa-trash"></i> Delete
                                         </button>
 
                                     </td>
                                 </tr>
-
                             @endforeach
                         </tbody>
                     </table>
                 @else
-                    <p class="p-3 text-center text-warning">No programs found.</p>
+                    <p class="p-3 text-center text-warning">No blogs found.</p>
                 @endif
 
             </div>
         </div>
 
-        <!-- ADD PROGRAM MODAL -->
-        <div class="modal fade" id="addProgramModal" tabindex="-1">
+        <!-- ADD BLOG MODAL -->
+        <div class="modal fade" id="addBlogModal" tabindex="-1">
             <div class="modal-dialog">
-                <form method="POST" action="{{ route('admin.programs.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.blogs.store') }}" enctype="multipart/form-data">
                     @csrf
-
                     <div class="modal-content">
 
                         <div class="modal-header">
-                            <h5 class="modal-title">Add New Program</h5>
+                            <h5 class="modal-title">Add New Blog</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
 
@@ -102,8 +104,11 @@
                             <label>Brief</label>
                             <textarea class="form-control mb-3" name="brief" rows="3" required></textarea>
 
-                            <label>Details</label>
-                            <textarea class="form-control mb-3 rich-editor" name="details" rows="6"></textarea>
+                            <label>Content</label>
+                            <textarea class="form-control mb-3 rich-editor" name="content" rows="6"></textarea>
+
+                            <label>Published Date</label>
+                            <input type="date" class="form-control mb-3" name="published_date" value="{{ date('Y-m-d') }}" required>
 
                             <label>Image</label>
                             <input type="file" class="form-control mb-3" name="image" accept="image/*" required>
@@ -112,44 +117,43 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-success" id="addProgramSubmitBtn">
-                                <i class="fa fa-check me-1"></i> Create Program
+                            <button class="btn btn-success" id="addBlogSubmitBtn">
+                                <i class="fa fa-check me-1"></i> Create Blog
                             </button>
                         </div>
 
                     </div>
-
                 </form>
             </div>
         </div>
 
-        <!-- EDIT PROGRAM MODAL -->
-        <div class="modal fade" id="editProgramModal" tabindex="-1">
+        <!-- EDIT BLOG MODAL -->
+        <div class="modal fade" id="editBlogModal" tabindex="-1">
             <div class="modal-dialog">
-                <form method="POST" action="{{ route('admin.programs.update') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.blogs.update') }}" enctype="multipart/form-data">
                     @csrf
-
-                    <input type="hidden" name="id" id="editProgramId">
+                    <input type="hidden" name="id" id="editBlogId">
 
                     <div class="modal-content">
 
                         <div class="modal-header">
-                            <h5 class="modal-title">Edit Program</h5>
+                            <h5 class="modal-title">Edit Blog</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
 
                         <div class="modal-body">
 
                             <label>Title</label>
-                            <input type="text" class="form-control mb-3" id="editProgramTitle" name="title" required>
+                            <input type="text" class="form-control mb-3" id="editBlogTitle" name="title" required>
 
                             <label>Brief</label>
-                            <textarea class="form-control mb-3" id="editProgramBrief" name="brief" rows="3"
-                                required></textarea>
+                            <textarea class="form-control mb-3" id="editBlogBrief" name="brief" rows="3" required></textarea>
 
-                            <label>Details</label>
-                            <textarea class="form-control mb-3 rich-editor" id="editProgramDetails" name="details"
-                                rows="6"></textarea>
+                            <label>Content</label>
+                            <textarea class="form-control mb-3 rich-editor" id="editBlogContent" name="content" rows="6" required></textarea>
+
+                            <label>Published Date</label>
+                            <input type="date" class="form-control mb-3" id="editBlogDate" name="published_date" required>
 
                             <label>Replace Image</label>
                             <input type="file" class="form-control mb-3" name="image" accept="image/*">
@@ -158,20 +162,18 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" id="editProgramSubmitBtn">
+                            <button class="btn btn-primary" id="editBlogSubmitBtn">
                                 <i class="fa fa-save me-1"></i> Save
                             </button>
                         </div>
 
                     </div>
-
                 </form>
             </div>
         </div>
 
-        {{-- SCRIPTS --}}
+        {{-- CKEditor --}}
         <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
-
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 document.querySelectorAll('.rich-editor').forEach(function (editorElement) {
@@ -180,32 +182,33 @@
             });
         </script>
 
+        {{-- Edit/Delete JS --}}
         <script>
             document.addEventListener("DOMContentLoaded", function () {
 
-                // EDIT PROGRAM
-                document.querySelectorAll(".editProgramBtn").forEach(btn => {
+                // EDIT BLOG
+                document.querySelectorAll(".editBlogBtn").forEach(btn => {
                     btn.addEventListener("click", function () {
+                        document.getElementById('editBlogId').value = this.dataset.id;
+                        document.getElementById('editBlogTitle').value = this.dataset.title;
+                        document.getElementById('editBlogBrief').value = this.dataset.brief;
+                        document.getElementById('editBlogContent').value = this.dataset.content;
+                        document.getElementById('editBlogDate').value = this.dataset.date;
 
-                        document.getElementById('editProgramId').value = this.dataset.id;
-                        document.getElementById('editProgramTitle').value = this.dataset.title;
-                        document.getElementById('editProgramBrief').value = this.dataset.brief;
+                        ClassicEditor.create(document.getElementById('editBlogContent'))
+                            .catch(error => console.error(error));
 
-                        tinymce.get("editProgramDetails").setContent(this.dataset.details);
-
-                        new bootstrap.Modal(document.getElementById('editProgramModal')).show();
+                        new bootstrap.Modal(document.getElementById('editBlogModal')).show();
                     });
                 });
 
-
-                // DELETE PROGRAM
-                document.querySelectorAll('.deleteProgramBtn').forEach(btn => {
+                // DELETE BLOG
+                document.querySelectorAll('.deleteBlogBtn').forEach(btn => {
                     btn.addEventListener('click', function () {
-
                         let id = this.dataset.id;
 
                         Swal.fire({
-                            title: "Delete Program?",
+                            title: "Delete Blog?",
                             text: "This action cannot be undone.",
                             icon: "warning",
                             showCancelButton: true,
@@ -221,33 +224,25 @@
                                     didOpen: () => Swal.showLoading()
                                 });
 
-                                window.location.href = "/admin/programs/delete/" + id;
+                                window.location.href = "/admin/blogs/delete/" + id;
                             }
                         });
-
                     });
                 });
 
-            });
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-
-                // ADD PROGRAM FORM SUBMIT LOADING
-                const addForm = document.querySelector('#addProgramModal form');
-                const addBtn = document.getElementById('addProgramSubmitBtn');
+                // Submit loading
+                const addForm = document.querySelector('#addBlogModal form');
+                const addBtn = document.getElementById('addBlogSubmitBtn');
 
                 if (addForm) {
                     addForm.addEventListener("submit", function () {
                         addBtn.disabled = true;
-                        addBtn.innerHTML = `<i class="fa fa-spinner fa-spin me-1"></i> Creating Program...`;
+                        addBtn.innerHTML = `<i class="fa fa-spinner fa-spin me-1"></i> Creating Blog...`;
                     });
                 }
 
-                // EDIT PROGRAM FORM SUBMIT LOADING
-                const editForm = document.querySelector('#editProgramModal form');
-                const editBtn = document.getElementById('editProgramSubmitBtn');
+                const editForm = document.querySelector('#editBlogModal form');
+                const editBtn = document.getElementById('editBlogSubmitBtn');
 
                 if (editForm) {
                     editForm.addEventListener("submit", function () {
@@ -260,6 +255,5 @@
         </script>
 
     </div>
-
 
     @include('layouts.footer')

@@ -10,6 +10,7 @@ use App\Models\Program;
 use App\Models\Partner;
 use App\Models\Event;
 use App\Models\User;
+use App\Models\Blog;
 
 class AdminController extends Controller
 {
@@ -299,4 +300,96 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Program deleted successfully.');
     }
+
+    public function programDetails(Request $request)
+    {
+        $program = Program::findOrFail($request->program_id);
+
+        return view('frontend.program-details', compact('program'));
+    }
+
+    public function adminBlogs()
+    {
+        $blogs = Blog::orderBy('published_date', 'desc')->get();
+        return view('frontend.blogs-admin', compact('blogs'));
+    }
+
+    public function storeBlog(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'brief' => 'required|string|max:255',
+            'content' => 'required|string',
+            'image' => 'required|image|mimes:jpg,jpeg,png',
+            'published_date' => 'required|date',
+        ]);
+
+        $blog = new Blog();
+        $blog->title = $validatedData['title'];
+        $blog->brief = $validatedData['brief'];
+
+        $blog->content = $request->input('content');
+        $blog->published_date = $validatedData['published_date'];
+
+        if ($request->hasFile('image')) {
+            $filename = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('blogs'), $filename);
+            $blog->image = $filename;
+        }
+
+        $blog->save();
+
+        return redirect()->back()->with('success', 'Blog created successfully!');
+    }
+
+    public function updateBlog(Request $request)
+    {
+        $blog = Blog::findOrFail($request->id);
+
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'brief' => 'required|string|max:255',
+            'content' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png',
+            'published_date' => 'required|date',
+        ]);
+
+        $blog->title = $validatedData['title'];
+        $blog->brief = $validatedData['brief'];
+        $blog->content = $request->input('content');
+        $blog->published_date = $validatedData['published_date'];
+
+        if ($request->hasFile('image')) {
+            $filename = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('blogs'), $filename);
+            $blog->image = $filename;
+        }
+
+        $blog->save();
+
+        return redirect()->back()->with('success', 'Blog updated successfully!');
+    }
+
+
+    public function deleteBlog($id)
+    {
+        $blog = Blog::findOrFail($id);
+
+        if ($blog->image && file_exists(public_path('blogs/' . $blog->image))) {
+            unlink(public_path('blogs/' . $blog->image));
+        }
+
+        $blog->delete();
+
+        return redirect()->back()->with('success', 'Blog deleted successfully!');
+    }
+
+    public function blogDetails(Request $request)
+    {
+        $blog = Blog::findOrFail($request->blog_id);
+
+        return view('frontend.blog-details', compact('blog'));
+    }
+
 }

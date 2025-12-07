@@ -128,36 +128,48 @@
                 <div class="footer-item mt-5">
                     <h4 class="text-light mb-4">Explore Link</h4>
                     <div class="d-flex flex-column align-items-start">
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>About Us</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Features</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Contact us</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Blog</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Events</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Donations</a>
-                        <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Sermons</a>
+                        <a class="text-body mb-2" href="{{ url('/') }}"><i class="fa fa-check text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="{{ url('about') }}"><i class="fa fa-check text-primary me-2"></i>About Us</a>
+                        <a class="text-body mb-2" href="{{ url('activity') }}"><i class="fa fa-check text-primary me-2"></i>Activities</a>
+                        <a class="text-body mb-2" href="{{ url('program') }}"><i class="fa fa-check text-primary me-2"></i>Our Programs</a>
+                        <a class="text-body mb-2" href="{{ url('blog') }}"><i class="fa fa-check text-primary me-2"></i>Our Blogs</a>
+                        <a class="text-body mb-2" href="{{ url('contact') }}"><i class="fa fa-check text-primary me-2"></i>Contact us</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item mt-5">
-                    <h4 class="text-light mb-4">Latest Post</h4>
-                    <div class="d-flex border-bottom border-secondary py-4">
-                        <img src="img/blog-mini-1.jpg" class="img-fluid flex-shrink-0" alt="">
-                        <div class="ps-3">
-                            <p class="mb-0 text-muted">01 Jan 2045</p>
-                            <a href="" class="text-body">Lorem ipsum dolor sit amet elit eros vel</a>
-                        </div>
-                    </div>
-                    <div class="d-flex py-4">
-                        <img src="img/blog-mini-2.jpg" class="img-fluid flex-shrink-0" alt="">
-                        <div class="ps-3">
-                            <p class="mb-0 text-muted">01 Jan 2045</p>
-                            <a href="" class="text-body">Lorem ipsum dolor sit amet elit eros vel</a>
-                        </div>
-                    </div>
+            <?php 
+                use App\Models\Blog;
+                $blogs = Blog::paginate(2);
+            ?>
+               <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item mt-5">
+                        <h4 class="text-light mb-4">Latest Blog Posts</h4>
+
+                        @if(isset($blogs) && $blogs->count())
+                            @foreach($blogs as $blog)
+                                <div class="d-flex align-items-center border-bottom border-secondary py-3">
+                                    <img src="{{ asset('blogs/' . $blog->image) }}" 
+                                        class="img-fluid flex-shrink-0" 
+                                        alt="{{ $blog->title }}" 
+                                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+
+                                    <div class="ps-3">
+                                        <p class="mb-1 text-primary" style="font-size: 0.85rem;">
+                                            {{ \Carbon\Carbon::parse($blog->published_date)->format('d M Y') }}
+                                        </p>
+                                        <a href="{{ route('blog.details', ['blog_id' => $blog->id]) }}" 
+                                        class="text-body" style="font-size: 0.95rem;">
+                                            {{ Str::limit($blog->title, 50) }}
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <p class="text-light">No blogs available.</p>
+                        @endif
                 </div>
             </div>
+
         </div>
     </div>
     <div class="container py-4">

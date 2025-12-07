@@ -141,9 +141,9 @@
     </div>
 
     <div class="container pt-3">
-        <a href="#" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Activities</a>
-        <a href="#" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Our Blogs</a>
-        <a href="#" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Donate</a>
+        <a href="{{ url('activity') }}" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Activities</a>
+        <a href="{{ url('blog') }}" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Our Blogs</a>
+        <a href="javascript:void();" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Donate</a>
     </div>
 </div>
 
@@ -154,114 +154,62 @@
             <h1 class="display-3 text-primary">Our Programs</h1>
         </div>
         <div class="row g-4 justify-content-center">
+            @foreach($programs as $program)
+                <div class="col-lg-6 col-xl-4">
+                    <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
 
-            <!-- Community Outreach -->
-            <div class="col-lg-6 col-xl-4">
-                <div class="sermon-item wow fadeIn" data-wow-delay="0.1s">
-                    <div class="overflow-hidden p-4 pb-0">
-                        <img src="img/sermon-1.jpg" class="img-fluid w-100" alt="Community Outreach">
-                    </div>
-                    <div class="p-4">
-                        <a href="" class="d-inline-block h4 lh-sm mb-3">Community Outreach</a>
-                        <p class="mb-3">Engaging communities and supporting vulnerable groups.</p>
-                        <a href="#" class="btn btn-primary px-3">More Details</a>
+                        <div class="overflow-hidden p-4 pb-0" style="height: 250px; overflow: hidden; border-radius: 6px;">
+                            <img src="{{ asset('programs/' . $program->image) }}" alt="{{ $program->title }}"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        </div>
+
+                        <div class="p-4">
+
+                            <!-- Clickable Title (POST) -->
+                            <form action="{{ route('program.details') }}" method="POST" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="program_id" value="{{ $program->id }}">
+                                <button type="submit" class="d-inline-block h4 lh-sm mb-3 btn btn-link p-0 text-start">
+                                    {{ $program->title }}
+                                </button>
+                            </form>
+
+                            <p class="mb-3">{{ $program->brief }}</p>
+
+                            <!-- More Details button (POST) -->
+                            <form action="{{ route('program.details') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="program_id" value="{{ $program->id }}">
+                                <button type="submit" class="btn btn-primary px-3">
+                                    More Details
+                                </button>
+                            </form>
+
+                        </div>
+
                     </div>
                 </div>
-            </div>
-
-            <!-- Health & Wellness -->
-            <div class="col-lg-6 col-xl-4">
-                <div class="sermon-item wow fadeIn" data-wow-delay="0.2s">
-                    <div class="overflow-hidden p-4 pb-0">
-                        <img src="img/sermon-2.jpg" class="img-fluid w-100" alt="Health & Wellness">
-                    </div>
-                    <div class="p-4">
-                        <a href="" class="d-inline-block h4 lh-sm mb-3">Health & Wellness</a>
-                        <p class="mb-3">Medical camps and wellness workshops for all ages.</p>
-                        <a href="#" class="btn btn-primary px-3">More Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Youth Empowerment -->
-            <div class="col-lg-6 col-xl-4">
-                <div class="sermon-item wow fadeIn" data-wow-delay="0.3s">
-                    <div class="overflow-hidden p-4 pb-0">
-                        <img src="img/sermon-3.jpg" class="img-fluid w-100" alt="Youth Empowerment">
-                    </div>
-                    <div class="p-4">
-                        <a href="" class="d-inline-block h4 lh-sm mb-3">Youth Empowerment</a>
-                        <p class="mb-3">Mentorship and skill-building to empower young people.</p>
-                        <a href="#" class="btn btn-primary px-3">More Details</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
 
 <div class="container pt-3 text-center">
-    <a href="#" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">See More</a>
+    <a href="{{ url('/sermon') }}" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">See More</a>
 </div>
 <!-- Sermon End -->
 
-<h1 class="display-3 text-dark pt-5" style="text-align: center;">Our Partners</h1>
+<h1 class="display-3 text-dark pt-5 text-center">Our Partners</h1>
 
 <div class="partner-slider">
     <div class="partner-track">
-        <!-- Your logos -->
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <img src="img/7.jpg" alt="">
+        @php
+            $logos = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg'];
+        @endphp
 
-        <!-- DUPLICATE logos (required for seamless loop) -->
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <img src="img/7.jpg" alt="">
-
-        <!-- Your logos -->
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <img src="img/7.jpg" alt="">
-
-        <!-- DUPLICATE logos (required for seamless loop) -->
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <img src="img/7.jpg" alt="">
-
-        <!-- Your logos -->
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <img src="img/7.jpg" alt="">
-
-        <!-- DUPLICATE logos (required for seamless loop) -->
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <img src="img/7.jpg" alt="">
+        @foreach(array_merge($logos, $logos, $logos, $logos) as $logo)
+            <img src="{{ asset('img/' . $logo) }}" alt="Partner Logo">
+        @endforeach
     </div>
 </div>
 

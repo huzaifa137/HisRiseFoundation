@@ -104,8 +104,8 @@
                                 <a href="{{ url('event') }}"
                                     class="dropdown-item {{ request()->is('event') ? 'active' : '' }}">Events</a>
 
-                                <a href="{{ url('Volunteers') }}"
-                                    class="dropdown-item {{ request()->is('Volunteers') ? 'active' : '' }}">Volunteers</a>
+                                <a href="{{ url('volunteers') }}"
+                                    class="dropdown-item {{ request()->is('volunteers') ? 'active' : '' }}">Volunteers</a>
 
                                 <a href="{{ url('Partners') }}"
                                     class="dropdown-item {{ request()->is('Partners') ? 'active' : '' }}">Partners</a>

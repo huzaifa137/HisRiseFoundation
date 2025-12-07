@@ -204,11 +204,11 @@
 <div class="partner-slider">
     <div class="partner-track">
         @php
-            $logos = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg'];
+            $logos = ['1.JPG','2.JPG','3.JPG','4.JPG','5.JPG','6.JPG','7.JPG'];
         @endphp
 
         @foreach(array_merge($logos, $logos, $logos, $logos) as $logo)
-            <img src="{{ asset('img/' . $logo) }}" alt="Partner Logo">
+            <img src="{{ asset('/img/' . $logo) }}" alt="Partner Logo">
         @endforeach
     </div>
 </div>

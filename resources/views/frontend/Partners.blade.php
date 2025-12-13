@@ -10,7 +10,7 @@
         <div class="row g-5">
 
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                <div class="p-4 shadow-sm rounded border border-2" style="border-color: #f7941d !important;">
+                <div class="p-4 shadow-sm rounded border border-2" style="border-color: #2db7c9!important;">
                     <h3 class="mb-4 text-dark">Why Partner With Our Organization?</h3>
                     <p class="mb-4" style="text-align: justify;">
                         We believe that the greatest impact is achieved through collaboration. Partnering with us allows

@@ -21,8 +21,8 @@
 
 
 <!-- Blog Start -->
-<div class="container-fluid py-5">
-    <div class="container py-5">
+<div class="container-fluid">
+    <div class="container">
         <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Latest From <span class="text-primary">Our
                 Blog</span></h1>
         <div class="row g-4 justify-content-center">

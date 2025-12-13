@@ -79,10 +79,34 @@
         </div>
         <div class="container">
             <nav class="navbar navbar-light navbar-expand-lg py-3">
-                <a href="{{ url('index') }}" class="navbar-brand">
-                    <img src="img/logo.png" alt="HisRise Foundation Logo" class="img-fluid"
-                        style="width: 100px; height: auto;" />
-                </a>
+               <a href="{{ url('index') }}" class="navbar-brand">
+    <img src="img/logo.png"
+         alt="HisRise Foundation Logo"
+         class="img-fluid"
+         id="navbarLogo"
+         style="width: 160px; height: auto; transition: width 0.3s ease;">
+</a>
+
+<script>
+    window.addEventListener('load', function () {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            // Add space below fixed/sticky navbar
+            document.body.style.paddingTop = navbar.offsetHeight + 'px';
+        }
+    });
+
+    window.addEventListener('scroll', function () {
+        const logo = document.getElementById('navbarLogo');
+
+        if (window.scrollY > 50) {
+            logo.style.width = '100px';
+        } else {
+            logo.style.width = '160px';
+        }
+    });
+</script>
+
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>

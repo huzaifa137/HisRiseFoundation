@@ -58,11 +58,11 @@
 
                                     <td class="text-center">
 
-                                        {{-- <button class="btn btn-sm btn-primary editProgramBtn" data-id="{{ $p->id }}"
+                                        <button class="btn btn-sm btn-primary editProgramBtn" data-id="{{ $p->id }}"
                                             data-title="{{ $p->title }}" data-brief="{{ $p->brief }}"
-                                            data-details="{{ htmlspecialchars($p->details) }}">
+                                            data-details='@json($p->details)'>
                                             <i class="fa fa-edit me-1"></i> Edit
-                                        </button> --}}
+                                        </button>
 
                                         <button class="btn btn-sm btn-danger deleteProgramBtn" data-id="{{ $p->id }}">
                                             <i class="fa fa-trash"></i> Delete
@@ -169,35 +169,30 @@
             </div>
         </div>
 
-        {{-- SCRIPTS --}}
         <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 
         <script>
+            // document.addEventListener('DOMContentLoaded', function () {
+            //     document.querySelectorAll('.rich-editor').forEach(function (editorElement) {
+            //         ClassicEditor.create(editorElement).catch(error => console.error(error));
+            //     });
+            // });
+
+            let editors = {};
+
             document.addEventListener('DOMContentLoaded', function () {
                 document.querySelectorAll('.rich-editor').forEach(function (editorElement) {
-                    ClassicEditor.create(editorElement).catch(error => console.error(error));
+                    ClassicEditor.create(editorElement)
+                        .then(editor => {
+                            editors[editorElement.id] = editor;
+                        })
+                        .catch(error => console.error(error));
                 });
             });
         </script>
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-
-                // EDIT PROGRAM
-                document.querySelectorAll(".editProgramBtn").forEach(btn => {
-                    btn.addEventListener("click", function () {
-
-                        document.getElementById('editProgramId').value = this.dataset.id;
-                        document.getElementById('editProgramTitle').value = this.dataset.title;
-                        document.getElementById('editProgramBrief').value = this.dataset.brief;
-
-                        tinymce.get("editProgramDetails").setContent(this.dataset.details);
-
-                        new bootstrap.Modal(document.getElementById('editProgramModal')).show();
-                    });
-                });
-
-
                 // DELETE PROGRAM
                 document.querySelectorAll('.deleteProgramBtn').forEach(btn => {
                     btn.addEventListener('click', function () {
@@ -227,8 +222,31 @@
 
                     });
                 });
+            });
+
+            // EDIT PROGRAM
+            document.addEventListener("DOMContentLoaded", function () {
+
+                document.querySelectorAll(".editProgramBtn").forEach(btn => {
+                    btn.addEventListener("click", function () {
+
+                        document.getElementById('editProgramId').value = this.dataset.id;
+                        document.getElementById('editProgramTitle').value = this.dataset.title;
+                        document.getElementById('editProgramBrief').value = this.dataset.brief;
+
+                        // Set CKEditor content correctly
+                        if (editors['editProgramDetails']) {
+                            editors['editProgramDetails'].setData(this.dataset.details);
+                        }
+
+                        new bootstrap.Modal(
+                            document.getElementById('editProgramModal')
+                        ).show();
+                    });
+                });
 
             });
+
         </script>
 
         <script>

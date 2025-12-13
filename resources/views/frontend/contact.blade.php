@@ -24,7 +24,7 @@
 <div class="container-fluid contact py-5" 
      style="background: #f9fafc;">
     <div class="container py-5"
-         style="border: 2px solid #f7941d; border-radius: 15px; padding: 40px; background: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.06);">
+         style="border: 2px solid #2db7c9; border-radius: 15px; padding: 40px; background: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.06);">
 
         <div class="text-center mx-auto mb-5 wow fadeIn" 
              data-wow-delay="0.1s" 
@@ -42,23 +42,23 @@
         <div class="row g-4 wow fadeIn" data-wow-delay="0.3s">
             <div class="col-sm-6">
                 <input type="text" class="form-control bg-transparent p-3" placeholder="Your Name"
-                       style="border: 1px solid #f7941d; border-radius: 8px;">
+                       style="border: 1px solid #2db7c9; border-radius: 8px;">
             </div>
 
             <div class="col-sm-6">
                 <input type="email" class="form-control bg-transparent p-3" placeholder="Your Email"
-                       style="border: 1px solid #f7941d; border-radius: 8px;">
+                       style="border: 1px solid #2db7c9; border-radius: 8px;">
             </div>
 
             <div class="col-12">
                 <input type="text" class="form-control bg-transparent p-3" placeholder="Subject"
-                       style="border: 1px solid #f7941d; border-radius: 8px;">
+                       style="border: 1px solid #2db7c9; border-radius: 8px;">
             </div>
 
             <div class="col-12">
                 <textarea class="w-100 form-control bg-transparent p-3" rows="6" cols="10"
                           placeholder="Your Message"
-                          style="border: 1px solid #f7941d; border-radius: 8px;"></textarea>
+                          style="border: 1px solid #2db7c9; border-radius: 8px;"></textarea>
             </div>
 
             <div class="col-12 text-center">

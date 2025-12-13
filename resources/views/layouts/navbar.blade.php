@@ -91,10 +91,48 @@
                     <div class="navbar-nav ms-lg-auto mx-xl-auto">
                         <a href="{{ url('index') }}"
                             class="nav-item nav-link {{ request()->is('index') ? 'active' : '' }}">Home</a>
-                        <a href="{{ url('about') }}"
-                            class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
+
+                        {{-- <a href="{{ url('about') }}"
+                            class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a> --}}
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle
+       {{ request()->is('our-story*')
+    || request()->is('our-strategy*')
+    || request()->is('our-team*')
+    || request()->is('our-volunteers*')
+    ? 'active' : '' }}" data-bs-toggle="dropdown">
+                                About Us
+                            </a>
+
+                            <div class="dropdown-menu m-0 rounded-0">
+                                <a href="{{ url('our-story') }}"
+                                    class="dropdown-item {{ request()->is('our-story*') ? 'active' : '' }}">
+                                    Our Story
+                                </a>
+
+                                <a href="{{ url('our-strategy') }}"
+                                    class="dropdown-item {{ request()->is('our-strategy*') ? 'active' : '' }}">
+                                    Our Strategy
+                                </a>
+
+                                <a href="{{ url('our-team') }}"
+                                    class="dropdown-item {{ request()->is('our-team*') ? 'active' : '' }}">
+                                    Our Team
+                                </a>
+
+                                <a href="{{ url('our-volunteers') }}"
+                                    class="dropdown-item {{ request()->is('our-volunteers*') ? 'active' : '' }}">
+                                    Our Volunteers
+                                </a>
+                            </div>
+                        </div>
+
+
+
                         <a href="{{ url('activity') }}"
                             class="nav-item nav-link {{ request()->is('activity') ? 'active' : '' }}">Activities</a>
+
                         <div class="nav-item dropdown 
     {{ request()->is('event') || request()->is('Volunteer') || request()->is('Partner') ? 'active' : '' }}">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -111,10 +149,32 @@
                                     class="dropdown-item {{ request()->is('Partners') ? 'active' : '' }}">Partners</a>
                             </div>
                         </div>
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle
+       {{ request()->is('blog') || request()->is('success-stories') ? 'active' : '' }}" data-bs-toggle="dropdown">
+                                Media
+                            </a>
+
+                            <div class="dropdown-menu m-0 rounded-0">
+
+                                <a href="{{ url('blog') }}"
+                                    class="dropdown-item {{ request()->is('blog') ? 'active' : '' }}">
+                                    Our Blogs
+                                </a>
+
+                                <a href="{{ url('success-stories') }}"
+                                    class="dropdown-item {{ request()->is('success-stories') ? 'active' : '' }}">
+                                    Success Stories
+                                </a>
+
+                            </div>
+                        </div>
+
+
                         <a href="{{ url('sermon') }}"
                             class="nav-item nav-link {{ request()->is('sermon') ? 'active' : '' }}">Our Programs</a>
-                        <a href="{{ url('blog') }}"
-                            class="nav-item nav-link {{ request()->is('blog') ? 'active' : '' }}">Our Blogs</a>
+
                         <a href="{{ url('contact') }}"
                             class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
                     </div>

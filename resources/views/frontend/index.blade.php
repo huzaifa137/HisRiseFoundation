@@ -141,9 +141,11 @@
     </div>
 
     <div class="container pt-3">
-        <a href="{{ url('activity') }}" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Activities</a>
-        <a href="{{ url('blog') }}" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Our Blogs</a>
+       <a href="{{ url('Partners') }}" accesskey=""
+            class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Partner with us</a>
+        <a href="{{ url('volunteers') }}" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Volunteers</a>
         <a href="javascript:void();" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">Donate</a>
+        <a href="javascript:void();" class="btn btn-outline-primary text-dark rounded-pill px-4 py-2 fs-5">sponsors</a>
     </div>
 </div>
 
@@ -204,7 +206,8 @@
 <div class="partner-slider">
     <div class="partner-track">
         @php
-            $logos = ['1.JPG','2.JPG','3.JPG','4.JPG','5.JPG','6.JPG','7.JPG'];
+            // $logos = ['1.JPG', '2.JPG', '3.JPG', '4.JPG', '5.JPG', '6.JPG', '7.JPG'];
+            $logos = ['1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG',];
         @endphp
 
         @foreach(array_merge($logos, $logos, $logos, $logos) as $logo)

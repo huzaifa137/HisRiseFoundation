@@ -21,6 +21,12 @@
                             <h2 class="h3 card-title text-primary fw-bold">Sign In</h2>
                             <p class="text-muted">Access your account now.</p>
                         </div>
+                        @if (session('fail'))
+                            <div class="alert alert-danger">
+                                {{ session('fail') }}
+                            </div>
+                        @endif
+
                         <form id="loginForm">
                             @csrf
 

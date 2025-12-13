@@ -89,20 +89,6 @@ class MasterController extends Controller
         ], 200);
     }
 
-    public function storeUser()
-    {
-
-        $email = 'huzaifabukenya227@gmail.com';
-        $password = 'Pa$$w0rd!';
-
-        $user = User::create([
-            'email' => $email,
-            'password' => Hash::make($password),
-        ]);
-
-        dd('Dummy user created successfully');
-    }
-
     public function logout(Request $request)
     {
         Auth::logout();

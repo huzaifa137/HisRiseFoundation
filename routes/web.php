@@ -14,7 +14,7 @@ Route::controller(MasterController::class)->group(function () {
 Route::controller(AdminController::class)->group(function () {
 
     Route::group(['middleware' => ['AdminAuth']], function () {
-        
+
         Route::prefix('admin')->group(function () {
 
             Route::post('/users/update', 'update')->name('admin.users.update');
@@ -45,20 +45,17 @@ Route::controller(AdminController::class)->group(function () {
         Route::get('/programs-admin', 'adminPrograms')->name('admin.programs');
         Route::get('/blogs-admin', 'adminBlogs')->name('admin.blogs');
 
-        Route::post('/program', action: 'programDetails')
-            ->name('program.details');
-
-        Route::post('/blog', 'blogDetails')
-            ->name('blog.details');
-
-        Route::post('/blog-details', action: 'blogDetails')
-            ->name('blog.details');
-
         Route::post('/blogs/store', 'storeBlog')->name('admin.blogs.store');
         Route::post('/blogs/update', 'updateBlog')->name('admin.blogs.update');
         Route::get('/blogs/delete/{id}', 'deleteBlog')->name('admin.blogs.delete');
 
     });
+
+            Route::post('/program', action: 'programDetails')
+            ->name('program.details');
+
+        Route::post('/blog', 'blogDetails')
+            ->name('blog.details');
 });
 
 Route::get('/{page}', [MasterController::class, 'load'])

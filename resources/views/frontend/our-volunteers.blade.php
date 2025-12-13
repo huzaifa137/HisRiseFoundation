@@ -40,7 +40,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item text-center">
                     <div class="team-img-container">
-                        <img class="img-fluid rounded-circle" src="img/team-1.jpg" alt="JJengo Peter">
+                        <img class="img-fluid rounded-circle" src="/img/team-1.JPG" alt="JJengo Peter">
                     </div>
                     <div class="team-text">
                         <h4 class="mb-0">JJengo Peter</h4>
@@ -52,7 +52,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="team-item text-center">
                     <div class="team-img-container">
-                        <img class="img-fluid rounded-circle" src="img/team-1.jpg" alt="Najjemba Rehemah">
+                        <img class="img-fluid rounded-circle" src="/img/team-1.JPG" alt="Najjemba Rehemah">
                     </div>
                     <div class="team-text">
                         <h4 class="mb-0">Najjemba Rehemah</h4>
@@ -64,7 +64,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="team-item text-center">
                     <div class="team-img-container">
-                        <img class="img-fluid rounded-circle" src="img/team-1.jpg" alt="Nankya Racheal">
+                        <img class="img-fluid rounded-circle" src="/img/team-1.JPG" alt="Nankya Racheal">
                     </div>
                     <div class="team-text">
                         <h4 class="mb-0">Nankya Racheal</h4>
@@ -76,7 +76,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="team-item text-center">
                     <div class="team-img-container">
-                        <img class="img-fluid rounded-circle" src="img/team-1.jpg" alt="Kayemba Regan">
+                        <img class="img-fluid rounded-circle" src="/img/team-1.JPG" alt="Kayemba Regan">
                     </div>
                     <div class="team-text">
                         <h4 class="mb-0">Kayemba Regan</h4>

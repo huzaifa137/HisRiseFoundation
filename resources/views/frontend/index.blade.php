@@ -116,7 +116,7 @@
             </div>
 
             <div class="col-md-3">
-                <h2 class="display-3 text-primary counter" data-target="1500">0</h2>
+                <h2 class="display-3 text-primary counter" data-target="500">0</h2>
                 <p class="fs-5">Volunteers Engaged</p>
             </div>
 

@@ -20,13 +20,15 @@
 
 
     <!-- Activities Start -->
-    <div class="container-fluid activities">
+    <div class="container-fluid activities section-bg mt-5">
         <div class="container">
             <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <p class="fs-5 text-uppercase text-primary">Activities</p>
-                <h1 class="display-3">Here Are Our Activities</h1>
+                <p class="text-uppercase text-center text-primary display-5 pt-4">Here Are Our Activities</p>
+                <p class="pb-0 text-center">
+                    From community education to healthcare support and environmental projects, we run initiatives that
+                    empower individuals, strengthen communities, and create lasting positive impact.
+                </p>
             </div>
-
             <div class="row g-4">
 
                 <!-- Community Outreach -->
@@ -37,7 +39,7 @@
                             <h4>Community Outreach</h4>
                             <p class="mb-4">We conduct regular outreach programs that engage communities, raise
                                 awareness on social issues, and support vulnerable groups.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -50,7 +52,7 @@
                             <h4>Health & Wellness Programs</h4>
                             <p class="mb-4">We offer health sensitization sessions, medical camps, and mental wellness
                                 support to improve overall community well-being.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -63,7 +65,7 @@
                             <h4>Youth Empowerment</h4>
                             <p class="mb-4">We provide mentorship, leadership training, and skill-building opportunities
                                 to empower young people to reach their potential.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -76,7 +78,7 @@
                             <h4>Education Support</h4>
                             <p class="mb-4">We support learners through scholarships, school materials, and academic
                                 programs to ensure quality education for all children.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -89,7 +91,7 @@
                             <h4>Gender Equality & Advocacy</h4>
                             <p class="mb-4">We champion gender equality through workshops, dialogues, and
                                 community-based interventions promoting respect and equity.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -102,7 +104,7 @@
                             <h4>Support for Vulnerable Children</h4>
                             <p class="mb-4">We provide care, education, emotional support, and basic needs assistance to
                                 orphans and vulnerable children in our communities.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -115,7 +117,7 @@
                             <h4>Livelihood & Skills Training</h4>
                             <p class="mb-4">We equip community members with practical skills such as tailoring, ICT,
                                 agribusiness, and entrepreneurship to improve self-reliance.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -128,7 +130,7 @@
                             <h4>Humanitarian Relief</h4>
                             <p class="mb-4">We provide emergency relief including food, clothing, clean water, and
                                 shelter support to families affected by crises.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -141,7 +143,7 @@
                             <h4>Environmental Conservation</h4>
                             <p class="mb-4">We promote tree planting, waste management, climate awareness, and
                                 community-driven environmental protection activities.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -149,5 +151,6 @@
             </div>
         </div>
     </div>
+    <!-- Activities Start -->
 
    @include('layouts.footer')

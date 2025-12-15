@@ -25,7 +25,23 @@
     }
 </style>
 
-<div class="container-fluid testimonial">
+<div class="container-fluid testimonial cocoa-blush-bg position-relative">
+
+    <!-- DOT DECORATION -->
+    <span style="
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        top: 80px;
+        right: 60px;
+        background-image: radial-gradient(
+            rgba(141, 110, 99, 0.35) 1.5px,
+            transparent 1.5px
+        );
+        background-size: 14px 14px;
+        z-index: 0;
+    "></span>
+
     <div class="container">
         <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
             <p class="text-uppercase text-center text-primary display-6">Our Volunteers</p>
@@ -88,5 +104,6 @@
         </div>
     </div>
 </div>
+
 
 @include('layouts.footer')

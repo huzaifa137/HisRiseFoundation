@@ -483,4 +483,157 @@ h4, h5, h6, .h4, .h5, .h6 {
         border: 2px solid rgb(86, 92, 92);
     }
 }
+
+.section-bg {
+    position: relative;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(46, 204, 113, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(52, 152, 219, 0.15), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(241, 196, 15, 0.15), transparent 45%),
+        #ffffff;
+}
+
+.abstract-bg {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.abstract-bg::before,
+.abstract-bg::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.abstract-bg::before {
+    width: 500px;
+    height: 500px;
+    background: rgba(46, 204, 113, 0.15);
+    top: -150px;
+    left: -150px;
+}
+
+.abstract-bg::after {
+    width: 400px;
+    height: 400px;
+    background: rgba(52, 152, 219, 0.15);
+    bottom: -120px;
+    right: -120px;
+}
+
+.abstract-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+.earth-circles-bg {
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.earth-circles-bg::before,
+.earth-circles-bg::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.earth-circles-bg::before {
+    width: 520px;
+    height: 520px;
+    background: rgba(121, 85, 72, 0.16);
+    top: -180px;
+    left: -180px;
+}
+
+.earth-circles-bg::after {
+    width: 380px;
+    height: 380px;
+    background: rgba(77, 182, 172, 0.14);
+    bottom: -140px;
+    right: -140px;
+}
+
+.earth-circles-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+.cocoa-blush-bg {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.cocoa-blush-bg::before,
+.cocoa-blush-bg::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.cocoa-blush-bg::before {
+    width: 460px;
+    height: 460px;
+    background: rgba(141, 110, 99, 0.18);
+    top: 10%;
+    right: -200px;
+}
+
+.cocoa-blush-bg::after {
+    width: 320px;
+    height: 320px;
+    background: rgba(244, 143, 177, 0.14);
+    bottom: -120px;
+    left: -120px;
+}
+
+.cocoa-blush-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bronze-olive-bg {
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.bronze-olive-bg::before,
+.bronze-olive-bg::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.bronze-olive-bg::before {
+    width: 480px;
+    height: 480px;
+    background: rgba(175, 135, 85, 0.17);
+    top: -160px;
+    right: -160px;
+}
+
+.bronze-olive-bg::after {
+    width: 360px;
+    height: 360px;
+    background: rgba(156, 204, 101, 0.14);
+    bottom: -130px;
+    left: -130px;
+}
+
+.bronze-olive-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 1 ==> .section-bg
+   2 ==> .abstract-bg
+   3 ==> .earth-circles-bg
 /*** Footer End ***/

@@ -26,7 +26,7 @@
     </style>
 
     <!-- About Satrt -->
-    <div class="container-fluid about">
+    <div class="container-fluid about abstract-bg">
         <div class="container">
             <div class="row pb-5">
                 <div class="col-xl-12 wow fadeIn" data-wow-delay="0.5s">

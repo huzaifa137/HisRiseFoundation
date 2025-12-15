@@ -1,6 +1,6 @@
 @include('layouts.navbar')
 
-<div class="container-fluid py-5 volunteer-section">
+<div class="container-fluid py-5 volunteer-section abstract-bg">
     <div class="container">
 
         <div class="col-12 text-center pt-5">

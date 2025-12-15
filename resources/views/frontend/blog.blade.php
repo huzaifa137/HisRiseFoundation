@@ -21,7 +21,7 @@
 
 
 <!-- Blog Start -->
-<div class="container-fluid">
+<div class="container-fluid section-bg">
     <div class="container">
         <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Latest From <span class="text-primary">Our
                 Blog</span></h1>

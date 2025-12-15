@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<div class="container-fluid testimonial">
+<div class="container-fluid testimonial bronze-olive-bg">
     <div class="container">
         <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
             <p class="text-uppercase text-center text-primary display-6 mt-5">Our Team</p>

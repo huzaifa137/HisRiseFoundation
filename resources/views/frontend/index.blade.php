@@ -60,19 +60,41 @@
 
 
 <!-- About Satrt -->
-<div class="container-fluid about">
+<div class="container-fluid about section-bg position-relative">
+
+    <!-- DOT DECORATION -->
+    <span style="
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 120px;
+        left: 60px;
+        background-image: radial-gradient(
+            rgba(121, 85, 72, 0.35) 1.5px,
+            transparent 1.5px
+        );
+        background-size: 14px 14px;
+        z-index: 0;
+    "></span>
+
     <div class="container">
         <div class="row pb-5">
-            <div class="col-xl-6 ">
+
+            <div class="col-xl-6">
                 <div class="row g-4">
                     <div class="col-12">
-                        <img src="img/about-4.jpg" class="img-fluid h-100 wow zoomIn" data-wow-delay="0.1s" alt="">
+                        <img src="img/about-4.jpg"
+                             class="img-fluid h-100 wow zoomIn"
+                             data-wow-delay="0.1s"
+                             alt="">
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
-                <p class="fs-5 text-uppercase text-primary">About THE HisRise</p>
+
+            <div class="col-xl-6 wow" data-wow-delay="0.5s">
+                <p class="fs-5 text-uppercase text-primary pt-3">About THE HisRise</p>
                 <h1 class="display-5 pb-4 m-0">HisRise Foundation</h1>
+
                 <p class="pb-2" style="text-align: justify;">
                     Formally known as the Ishak Community Foundation, HisRise Foundation was registered in
                     2021 as a community-based organisation in Jinja District, Uganda. Founded by Isiko Isaac,
@@ -80,23 +102,26 @@
                     overlooked in development efforts.
                 </p>
 
-                <p class="pb-2" style="text-align: justify;">Our mission is to empower boys through education, skills
-                    development, mentorship, and
+                <p class="pb-2" style="text-align: justify;">
+                    Our mission is to empower boys through education, skills development, mentorship, and
                     leadership training. We believe that when boys are guided to make responsible choices,
                     strengthen their resilience, and embrace positive masculinity, they rise not only for themselves
-                    but also for their families and communities.</p>
+                    but also for their families and communities.
+                </p>
 
                 <a href="" class="btn btn-primary">Learn More</a>
             </div>
+
         </div>
     </div>
 </div>
+
 <!-- About End -->
 
 <!-- Our Impact Start -->
 <h1 class="display-3 text-primary pb-4" style="text-align: center;">Our Impacts</h1>
 
-<div class="container-fluid bg-light py-5">
+<div class="container-fluid bg-light py-5 mb-5">
     <div class="container text-center">
         <div class="row g-4">
 
@@ -126,7 +151,7 @@
 
 <!-- Our Impact End -->
 
-<div class="col-xl-12 wow fadeIn text-center" data-wow-delay="0.5s">
+<div class="col-xl-12 wow fadeIn text-center abstract-bg mb-5" data-wow-delay="0.5s">
     <h1 class="display-3 text-dark pt-5" style="text-align: center;">Join Our Community</h1>
     <div class="container">
         <p>
@@ -150,7 +175,7 @@
 </div>
 
 <!-- Sermon Start -->
-<div class="container-fluid sermon">
+<div class="container-fluid sermon section-bg">
     <div class="container py-5">
         <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
             <h1 class="display-3 text-primary">Our Programs</h1>
@@ -201,23 +226,30 @@
 </div>
 <!-- Sermon End -->
 
-<h1 class="display-3 text-dark pt-5 text-center">Our Partners</h1>
 
-<div class="partner-slider">
-    <div class="partner-track">
-        @php
-            // $logos = ['1.JPG', '2.JPG', '3.JPG', '4.JPG', '5.JPG', '6.JPG', '7.JPG'];
-            $logos = ['1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG',];
-        @endphp
+<div class="container-fluid partners-decor-bg py-5">
 
-        @foreach(array_merge($logos, $logos, $logos, $logos) as $logo)
-            <img src="{{ asset('/img/' . $logo) }}" alt="Partner Logo">
-        @endforeach
+    <h1 class="display-3 text-dark pt-5 text-center">
+        Our Partners
+    </h1>
+
+    <div class="partner-slider section-bg">
+        <div class="partner-track">
+            @php
+                $logos = ['1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG','1.JPG'];
+            @endphp
+
+            @foreach(array_merge($logos, $logos, $logos, $logos) as $logo)
+                <img src="{{ asset('/img/' . $logo) }}" alt="Partner Logo">
+            @endforeach
+        </div>
     </div>
+
 </div>
 
+
 <!-- Blog Start -->
-<div class="container-fluid">
+<div class="container-fluid cocoa-blush-bg">
     <div class="container">
         <h1 class="display-3 mb-5 mt-3 wow fadeIn" data-wow-delay="0.1s" style="text-align: center;">
             <span class="text-primary">Our Gallery</span>

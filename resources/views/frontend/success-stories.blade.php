@@ -26,10 +26,10 @@
     </style>
 
     <!-- Testiminial Start -->
-    <div class="container-fluid testimonial">
+    <div class="container-fluid testimonial section-bg">
         <div class="container">
             <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <p class="text-uppercase text-center text-primary display-6">Our Success Stories</p>
+                <p class="text-uppercase text-center text-primary display-6 pt-5">Our Success Stories</p>
                 <p class="pb-0 text-center">Discover how our initiatives are making a difference through the words of
                     those we serve.</p>
             </div>

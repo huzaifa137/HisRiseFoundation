@@ -21,10 +21,10 @@
 
 
 <!-- Sermon Start -->
-<div class="container-fluid sermon">
+<div class="container-fluid sermon section-bg">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-            <h1 class="display-3 text-primary">Our Programs</h1>
+            <h1 class="display-3 text-primary pt-5">Our Programs</h1>
         </div>
         <div class="row g-4 justify-content-center">
             @foreach($programs as $program)
